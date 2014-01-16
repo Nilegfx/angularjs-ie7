@@ -8,23 +8,36 @@
 </head>
 <body>
 <div class="container">
+	
+	<a href="" class="btn" ng-dblclick="count = count+1">double click</a>
+	<div class="count">{{count}}</div>
 <div class="nile" ng-controller="firstCtrl">
 	{{name}}
 </div>
     <div ng-init="friends = [
-      {name:'John', age:25, gender:'boy'},
-      {name:'Jessie', age:30, gender:'girl'},
-      {name:'Johanna', age:28, gender:'girl'},
-      {name:'Joy', age:15, gender:'girl'},
-      {name:'Mary', age:28, gender:'girl'},
-      {name:'Peter', age:95, gender:'boy'},
-      {name:'Sebastian', age:50, gender:'boy'},
-      {name:'Erika', age:27, gender:'girl'},
-      {name:'Patrick', age:40, gender:'boy'},
-      {name:'Samantha', age:60, gender:'girl'}
+      {name:'John', age:25, details:{gender:'boy'}},
+      {name:'Jessie', age:30, details:{gender:'girl'}},
+      {name:'Johanna', age:28, details:{gender:'girl'}},
+      {name:'Joy', age:15, details:{gender:'girl'}},
+      {name:'Mary', age:28, details:{gender:'girl'}},
+      {name:'Peter', age:95, details:{gender:'boy'}},
+      {name:'Sebastian', age:50, details:{gender:'boy'}},
+      {name:'Erika', age:27, details:{gender:'girl'}},
+      {name:'Patrick', age:40, details:{gender:'boy'}},
+      {name:'Samantha', age:60, details:{gender:'girl'}}
     ]" style="padding:20px;">
         <input type="search" ng-model="q" placeholder="filter friends..." />
-				<div ng-class="{girl:friend.gender=='girl',boy:friend.gender != 'girl'}" ng-repeat="friend in friends | orderBy:'age':reverse=true |orderBy:'gender':reverse=true | filter:q">{{$index+1}} . {{friend.name}} ({{friend.age}})</div>
+
+        <label>learning list</label>
+        <select ng-model="nile" ng-options="item.age as item.name group by (item.details.gender + 's') for item in friends"></select>
+
+				<select ng-model="Selectfilter" ng-options="obj.details.gender as obj.details.gender for obj in friends"></select>
+        <select ng-model="Selectfilter2">
+        	<option value="">All</option>
+        	<option value="girl">Girls only</option>
+        	<option value="boy">Boys boys</option>
+        </select>
+				<div ng-class="{girl:friend.details.gender=='girl',boy:friend.details.gender != 'girl'}" ng-repeat="friend in friends | orderBy:'age':reverse=true |orderBy:'details.gender':reverse=true | filter:Selectfilter| filter:Selectfilter2 |filter:q">{{$index+1}} . {{friend.name}} ({{friend.age}})</div>
 
         
 
