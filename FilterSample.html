@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="eventsApp" id="ng-app">
+<head>
+    <meta charset="utf-8">
+    <title>Locale Sample </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+<div class="container">
+<div class="nile" ng-controller="firstCtrl">
+	{{name}}
+</div>
+    <div ng-init="friends = [
+      {name:'John', age:25, gender:'boy'},
+      {name:'Jessie', age:30, gender:'girl'},
+      {name:'Johanna', age:28, gender:'girl'},
+      {name:'Joy', age:15, gender:'girl'},
+      {name:'Mary', age:28, gender:'girl'},
+      {name:'Peter', age:95, gender:'boy'},
+      {name:'Sebastian', age:50, gender:'boy'},
+      {name:'Erika', age:27, gender:'girl'},
+      {name:'Patrick', age:40, gender:'boy'},
+      {name:'Samantha', age:60, gender:'girl'}
+    ]" style="padding:20px;">
+        <input type="search" ng-model="q" placeholder="filter friends..." />
+				<div ng-class="{girl:friend.gender=='girl',boy:friend.gender != 'girl'}" ng-repeat="friend in friends | orderBy:'age':reverse=true |orderBy:'gender':reverse=true | filter:q">{{$index+1}} . {{friend.name}} ({{friend.age}})</div>
+
+        
+
+
+    </div>
+</div>
+
+<script src="lib/json2.js"></script>
+<!-- <script src="lib/jquery.min.js"></script> -->
+<script src="lib/angular/v/angular.1.1.5.min.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular/angular-cookies.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/FilterSampleController.js"></script>
+<script src="js/filters.js"></script>
+<!-- <script src="lib/bootstrap.min.js"></script> -->
+<!-- <script src="lib/bootstrap.min.js"></script> -->
+
+</body>
+</html>
