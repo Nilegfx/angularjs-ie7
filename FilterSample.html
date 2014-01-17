@@ -9,10 +9,11 @@
 <body>
 <div class="container">
 	<div>
-		<input name="namesInput" ng-model="names" ng-init="names=['nile']" ng-list required>
+	<textarea ng-model="names" ng-init="names=['nile']" ng-list="/[\n,]/" required ></textarea>
+		<!-- <input name="namesInput" ng-model="names" ng-init="names=['nile']" ng-list="/[\n,]/" required> -->
 		{{names}}
 		<ul>
-			<li ng-repeat="name in names">{{name}}</li>
+			<li ng-repeat="name in names">{{name | uppercase}}</li>
 		</ul>
 	</div>
 
