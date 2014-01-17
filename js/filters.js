@@ -33,3 +33,9 @@ eventsApp.filter('nile', function() {
         }
     }
 });
+
+eventsApp.filter('capitalizeFirst',function(){
+	return function(item){
+		return item.charAt(0).toUpperCase()+item.substring(1);
+	}
+});
