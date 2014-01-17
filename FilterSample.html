@@ -8,7 +8,14 @@
 </head>
 <body>
 <div class="container">
-	
+	<div>
+		<input name="namesInput" ng-model="names" ng-init="names=['nile']" ng-list required>
+		{{names}}
+		<ul>
+			<li ng-repeat="name in names">{{name}}</li>
+		</ul>
+	</div>
+
 	<a href="" class="btn" ng-dblclick="count = count+1">double click</a>
 	<div class="count">{{count}}</div>
 <div class="nile" ng-controller="firstCtrl">
